@@ -45,24 +45,55 @@ echo "<br>";
 $x = array("Volvo", "BMW", "SAAB");
 var_dump($x);
 
-class Car
+interface BMWCar
+{
+    function getColor();
+
+    function getEngine();
+
+    function getName();
+}
+
+class Car implements BMWCar
 {
     var $color;
+    var $engine;
+    var $name;
 
-    function Car($color = "green")
+    function Car($color = "green", $engine = "b13n16")
     {
         $this->color = $color;
+        $this->engine = $engine;
     }
 
-    function what_color()
+    function setName($name)
     {
-        echo "$this->color";
+        $this->name = $name;
+    }
+
+
+    function getColor()
+    {
+        return $this->color;
+    }
+
+    function getEngine()
+    {
+        return $this->engine;
+    }
+
+    function getName()
+    {
+        return $this->name;
     }
 }
 
-$bmw120 = new Car("white");
-echo "<br>bmw120: Properties\n";
-$bmw120->what_color();
+$bmw120 = new Car("white", "b13n16a");
+$bmw120->setName("xiaomage");
+$_name = $bmw120->getName();
+$_carColor = $bmw120->getColor();
+$_engine = $bmw120->getEngine();
+echo "<br>bmw120 Properties<br>name:$_name<br>color:$_carColor<br>engine:$_engine";
 
 ?>
 
